@@ -20,8 +20,8 @@ const createCheckboxes = (people) => {
 }
 
 const createGroups = () => {
-    groupSize = Math.abs(parseInt(document.querySelector('#groupSize').value))
-    let people = [...document.querySelectorAll("input[type='checkbox']:checked")].map(elem => elem.value)
+    const groupSize = Math.abs(parseInt(document.querySelector('#groupSize').value))
+    const people = [...document.querySelectorAll("input[type='checkbox']:checked")].map(elem => elem.value)
     
     let groups = {}
     const shuffledPeople = shuffle(people);
@@ -46,9 +46,9 @@ const createButton = document.querySelector("#createGroups");
 createButton.addEventListener("click", createGroups);
 
 const  displayGroups = (groups) => {
-    let displayElement = document.querySelector("#groupsDisplay")
+    const displayElement = document.querySelector("#groupsDisplay")
     displayElement.innerHTML = ""
-    let groupTable
+    
     for (let group in groups) {
         displayElement.innerHTML += `<div class="group">
             ${group}: ${groups[group]}
