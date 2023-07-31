@@ -35,13 +35,13 @@ const createGroups = () => {
     if (document.querySelector('#groupSize').value < 0) {
         document.cookie = "petitMalin=true"
     }
-    
+
     const people = [...document.querySelectorAll("input[type='checkbox']:checked")].map(elem => elem.value)
     let groups = {}
     const shuffledPeople = shuffle(people);
 
     try {
-        for (let i = 0, j = 1; i < shuffledPeople.length && i != 0; i = i + groupSize, j++ ) {
+        for (let i = 0, j = 1; i < shuffledPeople.length && groupSize != 0; i = i + groupSize, j++ ) {
             if (shuffledPeople.slice(i, i + groupSize).length < groupSize - 1) {
                 for (let k = 0; k < shuffledPeople.slice(i, i + groupSize).length; k++) {
                     groups["Group " + (k + 1)].push(shuffledPeople.slice(i, i + groupSize)[k])
