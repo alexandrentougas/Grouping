@@ -1,5 +1,4 @@
 function fetchPeople() {
-    //const groupSize = parseInt(document.querySelector("#groupSize").value)
     fetch("./people.json")
     .then(res => res.json())
     .then(data => createCheckboxes(data.people))
@@ -48,7 +47,7 @@ createButton.addEventListener("click", createGroups);
 const  displayGroups = (groups) => {
     const displayElement = document.querySelector("#groupsDisplay")
     displayElement.innerHTML = ""
-    
+
     for (let group in groups) {
         displayElement.innerHTML += `<div class="group">
             ${group}: ${groups[group]}
