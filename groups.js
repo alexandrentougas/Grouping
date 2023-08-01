@@ -42,17 +42,18 @@ const createGroups = () => {
 
     try {
         for (let i = 0, j = 1; i < shuffledPeople.length && groupSize != 0; i = i + groupSize, j++ ) {
-            if (shuffledPeople.slice(i, i + groupSize).length < groupSize - 1) {
-                for (let k = 0; k < shuffledPeople.slice(i, i + groupSize).length; k++) {
-                    groups["Group " + (k + 1)].push(shuffledPeople.slice(i, i + groupSize)[k])
+            if (i != 0 && shuffledPeople.slice(i, i + groupSize).length < groupSize - 1 && shuffledPeople.slice(i, i + groupSize).length != 0) {
+                for (let k = 0, l = 1; k < shuffledPeople.slice(i, i + groupSize).length; k++, l++) {
+                    groups["Group " + l].push(shuffledPeople.slice(i, i + groupSize)[k])
+                    l = l == Object.keys(groups).length ? 0 : l
                 }
             } else {
                 groups["Group " + j] = shuffledPeople.slice(i, i + groupSize)
             }
         }
         displayGroups(groups);
-    } catch {
-        alert("Group size is too high !")
+    } catch(error) {
+        alert(error)
     }
         
 }
